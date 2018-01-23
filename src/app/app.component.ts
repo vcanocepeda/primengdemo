@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
-import {SelectItem} from 'primeng/api';
-
-interface City {
-  name: string;
-  code: string;
-}
+import {MenuItem} from 'primeng/api';
+import {Message} from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-root',
@@ -14,18 +10,32 @@ interface City {
 
 export class AppComponent {
   title = 'app';
-  cities: SelectItem[];
-  selectedCity: City;
- 
+  items: MenuItem[]; 
+  msgs: Message[] = [];
+
   constructor() {
-    //SelectItem API with label-value pairs
-    this.cities = [
-        {label:'Select City', value:null},
-        {label:'New York', value:{id:1, name: 'New York', code: 'NY'}},
-        {label:'Rome', value:{id:2, name: 'Rome', code: 'RM'}},
-        {label:'London', value:{id:3, name: 'London', code: 'LDN'}},
-        {label:'Istanbul', value:{id:4, name: 'Istanbul', code: 'IST'}},
-        {label:'Paris', value:{id:5, name: 'Paris', code: 'PRS'}}
-    ];
+    
+  }
+
+  ngOnInit() {
+    this.msgs = [];
+    this.items = [
+        {label: 'Home', icon: 'fa-bar-chart', routerLink: ['/home'], command: (event) => { this.msgs = []; } },
+        {label: 'About', icon: 'fa-calendar', routerLink: ['/about']},
+        {label: 'Demo', icon: 'fa-book', routerLink: ['/demo']},
+        {label: 'Documentation', icon: 'fa-book', url:'https://www.primefaces.org/documentation/'},
+        {label: 'Downloads', icon: 'fa-download', command: (event) => {
+          this.msgs.length = 0;
+          this.msgs.push({severity: 'info', summary: 'PrimeNG Showcase', 
+          detail:'Navigate all components'});
+         }
+        },
+        {label: 'About48', icon: 'fa-support', routerLink: ['/about/48']}
+    ]
+  }
+
+  showSuccess() {
+    this.msgs = [];
+    this.msgs.push({severity:'success', summary:'Success Message', detail:'Order submitted'});
   }
 }

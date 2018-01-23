@@ -7,13 +7,21 @@ import { AppRoutingModule } from './app-routing.module';
 import {CalendarModule} from 'primeng/calendar';
 import {FieldsetModule} from 'primeng/fieldset';
 import {DropdownModule} from 'primeng/dropdown';
+import {MessagesModule} from 'primeng/messages';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import {TabMenuModule} from 'primeng/tabmenu';
+import { DemoComponent } from './demo/demo.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +30,9 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     CalendarModule,
     DropdownModule,
-    FieldsetModule
+    FieldsetModule,
+    TabMenuModule,
+    MessagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
