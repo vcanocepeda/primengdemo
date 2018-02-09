@@ -10,12 +10,10 @@ import {Message} from 'primeng/components/common/api';
 
 export class AppComponent {
   title = 'app';
-  items: MenuItem[]; 
+  items: MenuItem[];
   msgs: Message[] = [];
 
-  constructor() {
-    
-  }
+  constructor() {}
 
   ngOnInit() {
     this.msgs = [];
@@ -23,19 +21,19 @@ export class AppComponent {
         {label: 'Home', icon: 'fa-bar-chart', routerLink: ['/home'], command: (event) => { this.msgs = []; } },
         {label: 'About', icon: 'fa-calendar', routerLink: ['/about']},
         {label: 'Demo', icon: 'fa-book', routerLink: ['/demo']},
-        {label: 'Documentation', icon: 'fa-book', url:'https://www.primefaces.org/documentation/'},
+        {label: 'Documentation', icon: 'fa-book', url: 'https://www.primefaces.org/documentation/'},
         {label: 'Downloads', icon: 'fa-download', command: (event) => {
           this.msgs.length = 0;
-          this.msgs.push({severity: 'info', summary: 'PrimeNG Showcase', 
-          detail:'Navigate all components'});
+          this.msgs.push({severity: 'info', summary: 'PrimeNG Showcase',
+          detail: 'Navigate all components'});
          }
         },
         {label: 'About48', icon: 'fa-support', routerLink: ['/about/48']}
-    ]
+    ];
   }
 
   showSuccess() {
     this.msgs = [];
-    this.msgs.push({severity:'success', summary:'Success Message', detail:'Order submitted'});
+    this.msgs.push({severity: 'success', summary: 'Success Message', detail: 'Order submitted'});
   }
 }

@@ -1,3 +1,27 @@
 <h3 class="first">Basic</h3>
 <input id="input" type="text" size="30" pInputText [(ngModel)]="text" pTooltip="Enter your favourite component name"> 
 <span id="text">{{text}}</span>
+
+<p-messages [(value)]="msgs"></p-messages>
+
+<p-dataList [value]="cars" [paginator]="true" [rows]="10" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="40">
+        <p-header>List of Cars</p-header>
+        
+    <ng-template let-car pTemplate="item">
+        <div class="ui-g-12 ui-md-9 car-details">
+            <div class="ui-g">
+                <div class="ui-g-2 ui-sm-6" style="border-left: 5px solid green">Vin: </div>
+                <div class="ui-g-10 ui-sm-6">{{car.vin}}</div>
+                
+                <div class="ui-g-2 ui-sm-6">Year: </div>
+                <div class="ui-g-10 ui-sm-6">{{car.year}}</div>
+                
+                <div class="ui-g-2 ui-sm-6">Brand: </div>
+                <div class="ui-g-10 ui-sm-6">{{car.brand}}</div>
+                
+                <div class="ui-g-2 ui-sm-6">Color: </div>
+                <div class="ui-g-10 ui-sm-6">{{car.color}}</div>
+            </div>
+        </div>
+    </ng-template>
+</p-dataList>
